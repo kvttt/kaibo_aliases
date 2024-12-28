@@ -1,6 +1,16 @@
 # Kaibo's Aliases
 Here are some aliases that I use in my daily work. They are defined in my `.bashrc` file. This is a work in progress. I will update this file as I add more aliases.
 
+## For checking home directory usage
+My home directory is limited to 5 GB. Therefore, once in a while I need to check how much space I have left. `.??*` matches all hidden files/directories with at least two characters (such that `.` and `..` are excluded). `*` matches all non-hidden files/directories. I sort the output by size in human-readable format and in reverse order.
+
+```bash
+duh(){
+    cd
+    du -skh .??* * | sort --human-numeric-sort --reverse
+}
+```
+
 ## For monitoring CPU and GPU usage
 Since my work tends to be memory-intensive, I use `top -o RES` to monitor memory usage. Default refresh interval is 3 seconds. Here, I set it to 1 second because 3 seconds is too slow for me. Note that `top` also allows you to monitor load average and CPU usage, which I find also useful.
 
