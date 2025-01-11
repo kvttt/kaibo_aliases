@@ -42,3 +42,43 @@ Aside from accessing the Linux workstation through SSH using VSCode, I also use 
 ```bash
 alias vnc='vncserver -geometry 2560x1440'
 ```
+
+## For working with $\LaTeX$
+
+At school and at work, I use $\LaTeX$ a lot. Here are some shorthands that I put in the preamble of my documents.
+
+```latex
+\documentclass[12pt, letterpaper, oneside, openany]{article}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+
+% Theorem environments
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+
+% For calculus
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\curl}{curl}
+\DeclareMathOperator{\Div}{div}
+
+% For real, complex, and functional analysis
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+
+% For linear algebra
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\diag}{diag}
+
+% Misc
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+```
