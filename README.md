@@ -44,11 +44,11 @@ alias vnc='vncserver -geometry 2560x1440'
 ```
 
 ## For running Python scripts
-I often need to run Python script overnight. I use `nohup` to prevent the script from being killed when I log out and I use `&` to run the script in the background. In the following alias, the first positional argument `$1` is the Python script that I want to run and the second positional argument `$2` is the output file that I want to save the output to. 
+I often need to run Python script overnight. I use `nohup` to prevent the script from being killed when I log out and I use `&` to run the script in the background. In the following alias, the first positional argument `$1` is the Python script that I want to run and the second positional argument `$2` is the output file that I want to save the output to. The `echo $!` command prints the PID of the Python script. Then, I call `top` and use `xargs` to pass the PID to `grep` such that I can easily monitor the CPU and memory usage of the Python script.
 
 ```bash
 py(){
-    nohup python -u $1 > $2 &
+    nohup python -u $1 > $2 & echo $! | xargs -I {} bash -c 'top -d 1 -b | grep {}'
 }
 ```
 
