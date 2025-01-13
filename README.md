@@ -43,6 +43,15 @@ Aside from accessing the Linux workstation through SSH using VSCode, I also use 
 alias vnc='vncserver -geometry 2560x1440'
 ```
 
+## For running Python scripts
+I often need to run Python script overnight. I use `nohup` to prevent the script from being killed when I log out and I use `&` to run the script in the background. In the following alias, the first positional argument `$1` is the Python script that I want to run and the second positional argument `$2` is the output file that I want to save the output to. 
+
+```bash
+py(){
+    nohup python -u $1 > $2 &
+}
+```
+
 ## For working with $\LaTeX$
 
 At school and at work, I use $\LaTeX$ a lot. Here are some shorthands that I put in the preamble of my documents.
