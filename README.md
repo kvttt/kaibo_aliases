@@ -52,6 +52,14 @@ py(){
 }
 ```
 
+Now that the script is up and running in the background, one might wish to have a quick look at the output file. To do this, I use `tail -f` to follow the output file. 
+
+```bash
+tf(){
+    tail -f -s 0.1 $1
+}
+```
+
 ## For working with $\LaTeX$
 
 At school and at work, I use $\LaTeX$ a lot. Here are some shorthands that I put in the preamble of my documents.
