@@ -43,6 +43,15 @@ Aside from accessing the Linux workstation through SSH using VSCode, I also use 
 alias vnc='vncserver -geometry 2560x1440'
 ```
 
+Now, sometimes I cannot connect to the VNC server for [this reason](https://unix.stackexchange.com/questions/469909/vncviewer-errorcould-not-connect-to-session-bus-failed-to-connect-to-socket-tm). To fix this, I add the following line to my `~/.vnc/xstartup` file. 
+```bash
+#!/bin/sh
+
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+eval "$(dbus-launch --sh-syntax)" # add this line
+```
+
 ## For running Python scripts
 I often need to run Python script overnight. I use `nohup` to prevent the script from being killed when I log out and I use `&` to run the script in the background. In the following alias, the first positional argument `$1` is the Python script that I want to run and the second positional argument `$2` is the output file that I want to save the output to. The `echo $!` command prints the PID of the Python script. Then, I call `top` and use `xargs` to pass the PID to `grep` such that I can easily monitor the CPU and memory usage of the Python script.
 
